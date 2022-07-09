@@ -3,7 +3,7 @@ resource "aws_vpc" "terraform_vpc" {
   cidr_block           = var.vpc_cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
-  instance_tenancy = "default"
+  instance_tenancy     = "default"
 
   tags = {
     Name        = "${local.name}-${var.vpc_name}"
@@ -33,7 +33,7 @@ resource "aws_internet_gateway" "terraform_igw" {
   }
 }
 
-/* ============= Route Table For Public Subnet ============= */ 
+/* ============= Route Table For Public Subnet ============= */
 resource "aws_route_table" "terraform_public_route_table" {
   vpc_id = aws_vpc.terraform_vpc.id
   tags = {
