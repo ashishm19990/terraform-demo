@@ -73,7 +73,7 @@ resource "aws_subnet" "terraform_private_subnet" {
 /* =================== Create NAT Gateway ========================= */
 resource "aws_nat_gateway" "terraform_nat_gateway" {
   allocation_id = aws_eip.terraform_eip.id
-  subnet_id     = element(aws_subnet.terraform_private_subnet.*.id, 0)
+  subnet_id     = element(aws_subnet.terraform_public_subnet.*.id, 0)
   depends_on    = [aws_internet_gateway.terraform_igw]
   tags = {
     Name        = "${local.name}-terraform-nat-gateway"

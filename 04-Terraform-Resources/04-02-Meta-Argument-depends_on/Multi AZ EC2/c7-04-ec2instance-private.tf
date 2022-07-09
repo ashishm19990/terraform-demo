@@ -6,6 +6,8 @@ resource "aws_instance" "terraform_private_instance" {
   key_name               = var.instance_keypair
   vpc_security_group_ids = [aws_security_group.terraform_allow_web.id, aws_security_group.terraform_allow_ssh.id]
   subnet_id              = element(aws_subnet.terraform_private_subnet[*].id, count.index)
+  user_data              = file("app1-install.sh")
+
   tags = {
     Name        = "${local.name}-Terraform-Private-Instance-${count.index}"
     Environment = "${var.environment}"
