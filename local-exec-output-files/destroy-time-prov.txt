@@ -1,2 +1,0 @@
-Destroy time prov date
-Destroy time prov Fri Jul 8 14:12:22 UTC 2022

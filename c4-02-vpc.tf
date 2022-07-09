@@ -81,7 +81,6 @@ resource "aws_nat_gateway" "terraform_nat_gateway" {
   }
 }
 
-
 /* ====== Create Route Table For Private Subnet =========== */
 resource "aws_route_table" "terraform_private_route_table" {
   vpc_id = aws_vpc.terraform_vpc.id
@@ -105,4 +104,3 @@ resource "aws_route" "terraform_private_route" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_nat_gateway.terraform_nat_gateway.id
 }
-
