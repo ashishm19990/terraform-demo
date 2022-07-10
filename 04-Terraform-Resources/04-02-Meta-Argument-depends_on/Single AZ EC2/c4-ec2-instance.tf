@@ -7,7 +7,7 @@ resource "aws_instance" "terraform_public_instance" {
   key_name                    = "terraform-key"
   subnet_id                   = aws_subnet.terraform_public_subnet.id
   vpc_security_group_ids      = ["${aws_security_group.terraform_allow_ssh.id}"]
-  
+
   tags = {
     Name = "Terraform-Public-Instance"
   }
@@ -21,8 +21,8 @@ resource "aws_instance" "terraform_private_instance" {
   key_name               = "terraform-key"
   subnet_id              = aws_subnet.terraform_private_subnet.id
   vpc_security_group_ids = ["${aws_security_group.terraform_allow_ssh.id}"]
-  user_data                   = file("app1-install.sh")
-  
+  user_data              = file("app1-install.sh")
+
   tags = {
     Name = "Terraform-Private-Instance"
   }
