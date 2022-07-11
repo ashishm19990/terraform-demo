@@ -7,6 +7,18 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+  # Adding Backend as S3 for Remote State Storage
+  backend "s3" {
+    bucket = "terraform-vardhmangarments"
+    key    = "statecommands/terraform.tfstate"
+    region = "us-east-1"
+
+    # Enable during Step-09     
+    # For State Locking
+    dynamodb_table = "terraform-dev-state-table"
+
+  }
 }
 
 # Provider Block
