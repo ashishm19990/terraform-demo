@@ -1,0 +1,46 @@
+id = "run-vn3PpRZzVSsKtANP"
+created_at = "2022-07-15T14:47:24.676Z"
+message = "Triggered via CLI"
+commit_sha = undefined
+speculative = false
+is_destroy = false
+refresh = true
+refresh_only = false
+replace_addrs = null
+target_addrs = null
+
+variables = {
+	"AWS_ACCESS_KEY_ID": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"AWS_SECRET_ACCESS_KEY": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"aws_region": {
+		"category":  "terraform",
+		"sensitive": false,
+	},
+}
+
+organization = {
+	"name": "zensar-parshv",
+}
+
+workspace = {
+	"auto_apply":        false,
+	"created_at":        "2022-07-15T14:31:54.300Z",
+	"description":       null,
+	"id":                "ws-21QEjCTszictX3qi",
+	"name":              "sentinel-demo1",
+	"tags":              [],
+	"vcs_repo":          null,
+	"working_directory": "",
+}
+
+cost_estimate = {
+	"delta_monthly_cost":    "0.0",
+	"prior_monthly_cost":    "0.0",
+	"proposed_monthly_cost": "0.0",
+}

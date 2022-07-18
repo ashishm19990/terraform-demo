@@ -80,7 +80,7 @@ terraform fmt
 terraform plan
 
 # Terraform Apply
-terraform apply -auto-apporve
+terraform apply -auto-approve
 
 # Verify 
 1) Verify in AWS management console , if EC2 Instances got created.

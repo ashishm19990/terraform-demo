@@ -8,8 +8,8 @@
     - Use module outputs
     - We are going to write a local re-usable module for the following usecase.
 - **Usecase: Hosting a static website with AWS S3 buckets**
-1. Create an S3 Bucket
-2. Create Public Read policy for the bucket
+    1. Create an S3 Bucket
+    2. Create Public Read policy for the bucket
 3. Once above two are ready, we can deploy Static Content 
 4. For steps, 1 and 2 we are going to create a re-usable module in Terraform
 - **How are we going to do this?**
@@ -44,7 +44,7 @@
 
 ### Step-02-04: Add Bucket policy for public read by bucket owners
 - Update your bucket name in the below listed policy
-- **Location:** v1-create-static-website-on-s3-using-aws-mgmt-console/policy-public-read-access-for-website.json
+- **Location:** v1-create-static-website-on-s3-using-aws-mgmt-console/policy-p  ite.json
 ```json
 {
   "Version": "2012-10-17",

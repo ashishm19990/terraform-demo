@@ -1,0 +1,36 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.terraform_ec2_instance (expand)" [label = "aws_instance.terraform_ec2_instance", shape = "box"]
+		"[root] aws_security_group.terraform_vpc_ssh (expand)" [label = "aws_security_group.terraform_vpc_ssh", shape = "box"]
+		"[root] aws_security_group.terraform_vpc_web (expand)" [label = "aws_security_group.terraform_vpc_web", shape = "box"]
+		"[root] data.aws_ami.amzlinux (expand)" [label = "data.aws_ami.amzlinux", shape = "box"]
+		"[root] output.ec2_instance_privateip" [label = "output.ec2_instance_privateip", shape = "note"]
+		"[root] output.ec2_instance_publicip" [label = "output.ec2_instance_publicip", shape = "note"]
+		"[root] output.ec2_publicdns" [label = "output.ec2_publicdns", shape = "note"]
+		"[root] output.ec2_security_groups" [label = "output.ec2_security_groups", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.aws_region" [label = "var.aws_region", shape = "note"]
+		"[root] var.ec2_instance_type" [label = "var.ec2_instance_type", shape = "note"]
+		"[root] aws_instance.terraform_ec2_instance (expand)" -> "[root] aws_security_group.terraform_vpc_ssh (expand)"
+		"[root] aws_instance.terraform_ec2_instance (expand)" -> "[root] aws_security_group.terraform_vpc_web (expand)"
+		"[root] aws_instance.terraform_ec2_instance (expand)" -> "[root] data.aws_ami.amzlinux (expand)"
+		"[root] aws_instance.terraform_ec2_instance (expand)" -> "[root] var.ec2_instance_type"
+		"[root] aws_security_group.terraform_vpc_ssh (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.terraform_vpc_web (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.amzlinux (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.ec2_instance_privateip" -> "[root] aws_instance.terraform_ec2_instance (expand)"
+		"[root] output.ec2_instance_publicip" -> "[root] aws_instance.terraform_ec2_instance (expand)"
+		"[root] output.ec2_publicdns" -> "[root] aws_instance.terraform_ec2_instance (expand)"
+		"[root] output.ec2_security_groups" -> "[root] aws_instance.terraform_ec2_instance (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.terraform_ec2_instance (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.aws_region"
+		"[root] root" -> "[root] output.ec2_instance_privateip"
+		"[root] root" -> "[root] output.ec2_instance_publicip"
+		"[root] root" -> "[root] output.ec2_publicdns"
+		"[root] root" -> "[root] output.ec2_security_groups"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+

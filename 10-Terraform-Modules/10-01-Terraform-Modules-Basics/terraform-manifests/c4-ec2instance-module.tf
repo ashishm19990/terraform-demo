@@ -15,7 +15,7 @@ module "ec2_cluster" {
   user_data              = file("apache-install.sh")
 
   tags = {
-    Name        = "Modules-Demo"
+    Name        = "Terraform-Modules-Demo"
     Terraform   = "true"
     Environment = "dev"
   }

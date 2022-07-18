@@ -1,0 +1,335 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"references": [
+					"var.aws_region",
+				],
+			},
+		},
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 4.0",
+	},
+}
+
+resources = {
+	"aws_instance.terraform_ec2_instance": {
+		"address": "aws_instance.terraform_ec2_instance",
+		"config": {
+			"ami": {
+				"references": [
+					"data.aws_ami.amzlinux.id",
+					"data.aws_ami.amzlinux",
+				],
+			},
+			"instance_type": {
+				"references": [
+					"var.ec2_instance_type",
+				],
+			},
+			"key_name": {
+				"constant_value": "terraform-key",
+			},
+			"tags": {
+				"references": [
+					"count.index",
+				],
+			},
+			"user_data": {
+				"constant_value": null,
+			},
+			"vpc_security_group_ids": {
+				"references": [
+					"aws_security_group.terraform_vpc_ssh.id",
+					"aws_security_group.terraform_vpc_ssh",
+					"aws_security_group.terraform_vpc_web.id",
+					"aws_security_group.terraform_vpc_web",
+				],
+			},
+		},
+		"count": {
+			"constant_value": 1,
+		},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "terraform_ec2_instance",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_instance",
+	},
+	"aws_security_group.terraform_vpc_ssh": {
+		"address": "aws_security_group.terraform_vpc_ssh",
+		"config": {
+			"description": {
+				"constant_value": "Dev VPC SSH",
+			},
+			"egress": {
+				"constant_value": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      "Allow all IP and Ports outbound",
+						"from_port":        0,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "-1",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          0,
+					},
+				],
+			},
+			"ingress": {
+				"constant_value": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      "Allow Port 22",
+						"from_port":        22,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "tcp",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          22,
+					},
+				],
+			},
+			"name": {
+				"references": [
+					"terraform.workspace",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "terraform_vpc_ssh",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_security_group",
+	},
+	"aws_security_group.terraform_vpc_web": {
+		"address": "aws_security_group.terraform_vpc_web",
+		"config": {
+			"description": {
+				"constant_value": "Dev VPC Web",
+			},
+			"egress": {
+				"constant_value": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      "Allow all IP and Ports outbound",
+						"from_port":        0,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "-1",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          0,
+					},
+				],
+			},
+			"ingress": {
+				"constant_value": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      "Allow Port 80",
+						"from_port":        80,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "tcp",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          80,
+					},
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      "Allow Port 443",
+						"from_port":        443,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "tcp",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          443,
+					},
+				],
+			},
+			"name": {
+				"references": [
+					"terraform.workspace",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "terraform_vpc_web",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_security_group",
+	},
+	"data.aws_ami.amzlinux": {
+		"address": "data.aws_ami.amzlinux",
+		"config": {
+			"filter": [
+				{
+					"name": {
+						"constant_value": "name",
+					},
+					"values": {
+						"constant_value": [
+							"amzn2-ami-kernel-*-gp2",
+						],
+					},
+				},
+				{
+					"name": {
+						"constant_value": "root-device-type",
+					},
+					"values": {
+						"constant_value": [
+							"ebs",
+						],
+					},
+				},
+				{
+					"name": {
+						"constant_value": "virtualization-type",
+					},
+					"values": {
+						"constant_value": [
+							"hvm",
+						],
+					},
+				},
+				{
+					"name": {
+						"constant_value": "architecture",
+					},
+					"values": {
+						"constant_value": [
+							"x86_64",
+						],
+					},
+				},
+			],
+			"most_recent": {
+				"constant_value": true,
+			},
+			"owners": {
+				"constant_value": [
+					"amazon",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "amzlinux",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ami",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"aws_region": {
+		"default":        "us-east-1",
+		"description":    "Region in which AWS Resources to be created",
+		"module_address": "",
+		"name":           "aws_region",
+	},
+	"ec2_instance_type": {
+		"default":        "t2.micro",
+		"description":    "EC2 Instance Type",
+		"module_address": "",
+		"name":           "ec2_instance_type",
+	},
+}
+
+outputs = {
+	"ec2_instance_privateip": {
+		"depends_on":     [],
+		"description":    "EC2 Instance Private IP",
+		"module_address": "",
+		"name":           "ec2_instance_privateip",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"aws_instance.terraform_ec2_instance",
+			],
+		},
+	},
+	"ec2_instance_publicip": {
+		"depends_on":     [],
+		"description":    "EC2 Instance Public IP",
+		"module_address": "",
+		"name":           "ec2_instance_publicip",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"aws_instance.terraform_ec2_instance",
+			],
+		},
+	},
+	"ec2_publicdns": {
+		"depends_on":     [],
+		"description":    "Public DNS URL of an EC2 Instance",
+		"module_address": "",
+		"name":           "ec2_publicdns",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"aws_instance.terraform_ec2_instance",
+			],
+		},
+	},
+	"ec2_security_groups": {
+		"depends_on":     [],
+		"description":    "List Security Groups associated with EC2 Instance",
+		"module_address": "",
+		"name":           "ec2_security_groups",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"aws_instance.terraform_ec2_instance",
+			],
+		},
+	},
+}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

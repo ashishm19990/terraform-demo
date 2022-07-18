@@ -1,0 +1,649 @@
+terraform_version = "1.2.5"
+
+planned_values = {
+	"outputs": {
+		"bucket_website_endpoint_url": {
+			"name":      "bucket_website_endpoint_url",
+			"sensitive": false,
+			"value":     undefined,
+		},
+		"endpoint": {
+			"name":      "endpoint",
+			"sensitive": false,
+			"value":     undefined,
+		},
+	},
+	"resources": {
+		"aws_s3_bucket.s3_bucket": {
+			"address":        "aws_s3_bucket.s3_bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "s3_bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket",
+			"values": {
+				"acl":           "public-read",
+				"bucket":        "terraform-bucket-1061",
+				"bucket_prefix": null,
+				"force_destroy": true,
+				"policy":        "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n      {\r\n          \"Sid\": \"PublicReadGetObject\",\r\n          \"Effect\": \"Allow\",\r\n          \"Principal\": \"*\",\r\n          \"Action\": [\r\n              \"s3:GetObject\"\r\n          ],\r\n          \"Resource\": [\r\n              \"arn:aws:s3:::terraform-bucket-1061/*\"\r\n          ]\r\n      }\r\n  ]\r\n}  \r\n",
+				"tags": {
+					"Environment": "dev",
+					"Terraform":   "true",
+					"newtag1":     "tag1",
+					"newtag2":     "tag2",
+				},
+				"tags_all": {
+					"Environment": "dev",
+					"Terraform":   "true",
+					"newtag1":     "tag1",
+					"newtag2":     "tag2",
+				},
+				"website": [
+					{
+						"error_document":           "error.html",
+						"index_document":           "index.html",
+						"redirect_all_requests_to": null,
+						"routing_rules":            null,
+					},
+				],
+			},
+		},
+		"aws_s3_bucket_object.bucket": {
+			"address":        "aws_s3_bucket_object.bucket",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "bucket",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_s3_bucket_object",
+			"values": {
+				"acl":                           "public-read",
+				"cache_control":                 null,
+				"content":                       "<html xmlns=\"http://www.w3.org/1999/xhtml\" >\r\n<head>\r\n    <title>Welcome In Vardhman Garments</title>\r\n</head>\r\n<body style=\"background-color:rgb(127, 178, 210);\">\r\n   <h1>Welcome In Vardhman Garments -  Terraform & Sentinel Demo</h1>\r\n   <h2>Sentinel Demo</h2>\r\n   <p>Terraform Sentinel - Demo - V2</p>\r\n</body>\r\n</html>",
+				"content_base64":                null,
+				"content_disposition":           null,
+				"content_encoding":              null,
+				"content_language":              null,
+				"content_type":                  "text/html",
+				"force_destroy":                 false,
+				"key":                           "index.html",
+				"metadata":                      null,
+				"object_lock_legal_hold_status": null,
+				"object_lock_mode":              null,
+				"object_lock_retain_until_date": null,
+				"source":                        null,
+				"source_hash":                   null,
+				"tags":                          null,
+				"website_redirect":              null,
+			},
+		},
+	},
+}
+
+variables = {
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "us-east-1",
+	},
+	"bucket_name": {
+		"name":  "bucket_name",
+		"value": "terraform-bucket-1061",
+	},
+	"tags": {
+		"name": "tags",
+		"value": {
+			"Environment": "dev",
+			"Terraform":   "true",
+			"newtag1":     "tag1",
+			"newtag2":     "tag2",
+		},
+	},
+}
+
+resource_changes = {
+	"aws_s3_bucket.s3_bucket": {
+		"address": "aws_s3_bucket.s3_bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl":           "public-read",
+				"bucket":        "terraform-bucket-1061",
+				"bucket_prefix": null,
+				"force_destroy": true,
+				"policy":        "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n      {\r\n          \"Sid\": \"PublicReadGetObject\",\r\n          \"Effect\": \"Allow\",\r\n          \"Principal\": \"*\",\r\n          \"Action\": [\r\n              \"s3:GetObject\"\r\n          ],\r\n          \"Resource\": [\r\n              \"arn:aws:s3:::terraform-bucket-1061/*\"\r\n          ]\r\n      }\r\n  ]\r\n}  \r\n",
+				"tags": {
+					"Environment": "dev",
+					"Terraform":   "true",
+					"newtag1":     "tag1",
+					"newtag2":     "tag2",
+				},
+				"tags_all": {
+					"Environment": "dev",
+					"Terraform":   "true",
+					"newtag1":     "tag1",
+					"newtag2":     "tag2",
+				},
+				"website": [
+					{
+						"error_document":           "error.html",
+						"index_document":           "index.html",
+						"redirect_all_requests_to": null,
+						"routing_rules":            null,
+					},
+				],
+			},
+			"after_unknown": {
+				"acceleration_status": true,
+				"arn":                                  true,
+				"bucket_domain_name":                   true,
+				"bucket_regional_domain_name":          true,
+				"cors_rule":                            true,
+				"grant":                                true,
+				"hosted_zone_id":                       true,
+				"id":                                   true,
+				"lifecycle_rule":                       true,
+				"logging":                              true,
+				"object_lock_configuration":            true,
+				"object_lock_enabled":                  true,
+				"region":                               true,
+				"replication_configuration":            true,
+				"request_payer":                        true,
+				"server_side_encryption_configuration": true,
+				"tags":       {},
+				"tags_all":   {},
+				"versioning": true,
+				"website": [
+					{},
+				],
+				"website_domain":   true,
+				"website_endpoint": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "s3_bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket",
+	},
+	"aws_s3_bucket_object.bucket": {
+		"address": "aws_s3_bucket_object.bucket",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"acl":                           "public-read",
+				"cache_control":                 null,
+				"content":                       "<html xmlns=\"http://www.w3.org/1999/xhtml\" >\r\n<head>\r\n    <title>Welcome In Vardhman Garments</title>\r\n</head>\r\n<body style=\"background-color:rgb(127, 178, 210);\">\r\n   <h1>Welcome In Vardhman Garments -  Terraform & Sentinel Demo</h1>\r\n   <h2>Sentinel Demo</h2>\r\n   <p>Terraform Sentinel - Demo - V2</p>\r\n</body>\r\n</html>",
+				"content_base64":                null,
+				"content_disposition":           null,
+				"content_encoding":              null,
+				"content_language":              null,
+				"content_type":                  "text/html",
+				"force_destroy":                 false,
+				"key":                           "index.html",
+				"metadata":                      null,
+				"object_lock_legal_hold_status": null,
+				"object_lock_mode":              null,
+				"object_lock_retain_until_date": null,
+				"source":                        null,
+				"source_hash":                   null,
+				"tags":                          null,
+				"website_redirect":              null,
+			},
+			"after_unknown": {
+				"bucket":                 true,
+				"bucket_key_enabled":     true,
+				"etag":                   true,
+				"id":                     true,
+				"kms_key_id":             true,
+				"server_side_encryption": true,
+				"storage_class":          true,
+				"tags_all":               true,
+				"version_id":             true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "bucket",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_s3_bucket_object",
+	},
+}
+
+output_changes = {
+	"bucket_website_endpoint_url": {
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after":         undefined,
+			"after_unknown": true,
+			"before":        null,
+		},
+		"name": "bucket_website_endpoint_url",
+	},
+	"endpoint": {
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after":         undefined,
+			"after_unknown": true,
+			"before":        null,
+		},
+		"name": "endpoint",
+	},
+}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"references": [
+							"var.aws_region",
+						],
+					},
+				},
+				"name":               "aws",
+				"version_constraint": "~> 4.0",
+			},
+		},
+		"root_module": {
+			"outputs": {
+				"bucket_website_endpoint_url": {
+					"expression": {
+						"references": [
+							"aws_s3_bucket.s3_bucket.website_endpoint",
+							"aws_s3_bucket.s3_bucket",
+						],
+					},
+				},
+				"endpoint": {
+					"description": "Endpoint Information of the bucket",
+					"expression": {
+						"references": [
+							"aws_s3_bucket.s3_bucket.website_endpoint",
+							"aws_s3_bucket.s3_bucket",
+						],
+					},
+				},
+			},
+			"resources": [
+				{
+					"address": "aws_s3_bucket.s3_bucket",
+					"expressions": {
+						"acl": {
+							"constant_value": "public-read",
+						},
+						"bucket": {
+							"references": [
+								"var.bucket_name",
+							],
+						},
+						"force_destroy": {
+							"constant_value": true,
+						},
+						"policy": {
+							"references": [
+								"var.bucket_name",
+							],
+						},
+						"tags": {
+							"references": [
+								"var.tags",
+							],
+						},
+						"website": [
+							{
+								"error_document": {
+									"constant_value": "error.html",
+								},
+								"index_document": {
+									"constant_value": "index.html",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "s3_bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket",
+				},
+				{
+					"address": "aws_s3_bucket_object.bucket",
+					"expressions": {
+						"acl": {
+							"constant_value": "public-read",
+						},
+						"bucket": {
+							"references": [
+								"aws_s3_bucket.s3_bucket.id",
+								"aws_s3_bucket.s3_bucket",
+							],
+						},
+						"content": {
+							"references": [
+								"path.module",
+							],
+						},
+						"content_type": {
+							"constant_value": "text/html",
+						},
+						"key": {
+							"constant_value": "index.html",
+						},
+					},
+					"mode":                "managed",
+					"name":                "bucket",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_s3_bucket_object",
+				},
+			],
+			"variables": {
+				"aws_region": {
+					"default":     "us-east-1",
+					"description": "Region in which AWS Resources to be created",
+				},
+				"bucket_name": {
+					"default":     "terraform-bucket-1061",
+					"description": "Name of the S3 bucket. Must be Unique across AWS",
+				},
+				"tags": {
+					"default": {
+						"Environment": "dev",
+						"Terraform":   "true",
+						"newtag1":     "tag1",
+						"newtag2":     "tag2",
+					},
+					"description": "Tages to set on the bucket",
+				},
+			},
+		},
+	},
+	"format_version": "1.1",
+	"output_changes": {
+		"bucket_website_endpoint_url": {
+			"actions": [
+				"create",
+			],
+			"after_sensitive":  false,
+			"after_unknown":    true,
+			"before":           null,
+			"before_sensitive": false,
+		},
+		"endpoint": {
+			"actions": [
+				"create",
+			],
+			"after_sensitive":  false,
+			"after_unknown":    true,
+			"before":           null,
+			"before_sensitive": false,
+		},
+	},
+	"planned_values": {
+		"outputs": {
+			"bucket_website_endpoint_url": {
+				"sensitive": false,
+			},
+			"endpoint": {
+				"sensitive": false,
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_s3_bucket.s3_bucket",
+					"mode":           "managed",
+					"name":           "s3_bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"cors_rule":                            [],
+						"grant":                                [],
+						"lifecycle_rule":                       [],
+						"logging":                              [],
+						"object_lock_configuration":            [],
+						"replication_configuration":            [],
+						"server_side_encryption_configuration": [],
+						"tags":       {},
+						"tags_all":   {},
+						"versioning": [],
+						"website": [
+							{},
+						],
+					},
+					"type": "aws_s3_bucket",
+					"values": {
+						"acl":           "public-read",
+						"bucket":        "terraform-bucket-1061",
+						"bucket_prefix": null,
+						"force_destroy": true,
+						"policy":        "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n      {\r\n          \"Sid\": \"PublicReadGetObject\",\r\n          \"Effect\": \"Allow\",\r\n          \"Principal\": \"*\",\r\n          \"Action\": [\r\n              \"s3:GetObject\"\r\n          ],\r\n          \"Resource\": [\r\n              \"arn:aws:s3:::terraform-bucket-1061/*\"\r\n          ]\r\n      }\r\n  ]\r\n}  \r\n",
+						"tags": {
+							"Environment": "dev",
+							"Terraform":   "true",
+							"newtag1":     "tag1",
+							"newtag2":     "tag2",
+						},
+						"tags_all": {
+							"Environment": "dev",
+							"Terraform":   "true",
+							"newtag1":     "tag1",
+							"newtag2":     "tag2",
+						},
+						"website": [
+							{
+								"error_document":           "error.html",
+								"index_document":           "index.html",
+								"redirect_all_requests_to": null,
+								"routing_rules":            null,
+							},
+						],
+					},
+				},
+				{
+					"address":        "aws_s3_bucket_object.bucket",
+					"mode":           "managed",
+					"name":           "bucket",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_s3_bucket_object",
+					"values": {
+						"acl":                           "public-read",
+						"cache_control":                 null,
+						"content":                       "<html xmlns=\"http://www.w3.org/1999/xhtml\" >\r\n<head>\r\n    <title>Welcome In Vardhman Garments</title>\r\n</head>\r\n<body style=\"background-color:rgb(127, 178, 210);\">\r\n   <h1>Welcome In Vardhman Garments -  Terraform & Sentinel Demo</h1>\r\n   <h2>Sentinel Demo</h2>\r\n   <p>Terraform Sentinel - Demo - V2</p>\r\n</body>\r\n</html>",
+						"content_base64":                null,
+						"content_disposition":           null,
+						"content_encoding":              null,
+						"content_language":              null,
+						"content_type":                  "text/html",
+						"force_destroy":                 false,
+						"key":                           "index.html",
+						"metadata":                      null,
+						"object_lock_legal_hold_status": null,
+						"object_lock_mode":              null,
+						"object_lock_retain_until_date": null,
+						"source":                        null,
+						"source_hash":                   null,
+						"tags":                          null,
+						"website_redirect":              null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_s3_bucket.s3_bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl":           "public-read",
+					"bucket":        "terraform-bucket-1061",
+					"bucket_prefix": null,
+					"force_destroy": true,
+					"policy":        "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n      {\r\n          \"Sid\": \"PublicReadGetObject\",\r\n          \"Effect\": \"Allow\",\r\n          \"Principal\": \"*\",\r\n          \"Action\": [\r\n              \"s3:GetObject\"\r\n          ],\r\n          \"Resource\": [\r\n              \"arn:aws:s3:::terraform-bucket-1061/*\"\r\n          ]\r\n      }\r\n  ]\r\n}  \r\n",
+					"tags": {
+						"Environment": "dev",
+						"Terraform":   "true",
+						"newtag1":     "tag1",
+						"newtag2":     "tag2",
+					},
+					"tags_all": {
+						"Environment": "dev",
+						"Terraform":   "true",
+						"newtag1":     "tag1",
+						"newtag2":     "tag2",
+					},
+					"website": [
+						{
+							"error_document":           "error.html",
+							"index_document":           "index.html",
+							"redirect_all_requests_to": null,
+							"routing_rules":            null,
+						},
+					],
+				},
+				"after_sensitive": {
+					"cors_rule":                            [],
+					"grant":                                [],
+					"lifecycle_rule":                       [],
+					"logging":                              [],
+					"object_lock_configuration":            [],
+					"replication_configuration":            [],
+					"server_side_encryption_configuration": [],
+					"tags":       {},
+					"tags_all":   {},
+					"versioning": [],
+					"website": [
+						{},
+					],
+				},
+				"after_unknown": {
+					"acceleration_status": true,
+					"arn":                                  true,
+					"bucket_domain_name":                   true,
+					"bucket_regional_domain_name":          true,
+					"cors_rule":                            true,
+					"grant":                                true,
+					"hosted_zone_id":                       true,
+					"id":                                   true,
+					"lifecycle_rule":                       true,
+					"logging":                              true,
+					"object_lock_configuration":            true,
+					"object_lock_enabled":                  true,
+					"region":                               true,
+					"replication_configuration":            true,
+					"request_payer":                        true,
+					"server_side_encryption_configuration": true,
+					"tags":       {},
+					"tags_all":   {},
+					"versioning": true,
+					"website": [
+						{},
+					],
+					"website_domain":   true,
+					"website_endpoint": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "s3_bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket",
+		},
+		{
+			"address": "aws_s3_bucket_object.bucket",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"acl":                           "public-read",
+					"cache_control":                 null,
+					"content":                       "<html xmlns=\"http://www.w3.org/1999/xhtml\" >\r\n<head>\r\n    <title>Welcome In Vardhman Garments</title>\r\n</head>\r\n<body style=\"background-color:rgb(127, 178, 210);\">\r\n   <h1>Welcome In Vardhman Garments -  Terraform & Sentinel Demo</h1>\r\n   <h2>Sentinel Demo</h2>\r\n   <p>Terraform Sentinel - Demo - V2</p>\r\n</body>\r\n</html>",
+					"content_base64":                null,
+					"content_disposition":           null,
+					"content_encoding":              null,
+					"content_language":              null,
+					"content_type":                  "text/html",
+					"force_destroy":                 false,
+					"key":                           "index.html",
+					"metadata":                      null,
+					"object_lock_legal_hold_status": null,
+					"object_lock_mode":              null,
+					"object_lock_retain_until_date": null,
+					"source":                        null,
+					"source_hash":                   null,
+					"tags":                          null,
+					"website_redirect":              null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"bucket":                 true,
+					"bucket_key_enabled":     true,
+					"etag":                   true,
+					"id":                     true,
+					"kms_key_id":             true,
+					"server_side_encryption": true,
+					"storage_class":          true,
+					"tags_all":               true,
+					"version_id":             true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "bucket",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_s3_bucket_object",
+		},
+	],
+	"terraform_version": "1.2.5",
+	"variables": {
+		"aws_region": {
+			"value": "us-east-1",
+		},
+		"bucket_name": {
+			"value": "terraform-bucket-1061",
+		},
+		"tags": {
+			"value": {
+				"Environment": "dev",
+				"Terraform":   "true",
+				"newtag1":     "tag1",
+				"newtag2":     "tag2",
+			},
+		},
+	},
+}

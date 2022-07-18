@@ -1,0 +1,52 @@
+2022-07-17T18:26:43.275+0530 [INFO]  Terraform version: 1.2.4
+2022-07-17T18:26:43.278+0530 [DEBUG] using github.com/hashicorp/go-tfe v1.0.0
+2022-07-17T18:26:43.278+0530 [DEBUG] using github.com/hashicorp/hcl/v2 v2.12.0
+2022-07-17T18:26:43.278+0530 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2022-07-17T18:26:43.278+0530 [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2022-07-17T18:26:43.278+0530 [DEBUG] using github.com/zclconf/go-cty v1.10.0
+2022-07-17T18:26:43.278+0530 [INFO]  Go runtime version: go1.18.1
+2022-07-17T18:26:43.284+0530 [INFO]  CLI args: []string{"C:\\Terraform\\terraform_1.2.4_windows_amd64\\terraform.exe", "init"}
+2022-07-17T18:26:43.284+0530 [TRACE] Stdout is a terminal of width 124
+2022-07-17T18:26:43.284+0530 [TRACE] Stderr is a terminal of width 124
+2022-07-17T18:26:43.284+0530 [TRACE] Stdin is a terminal
+2022-07-17T18:26:43.293+0530 [DEBUG] Attempting to open CLI config file: C:\Users\AM65085.POOLW42SLPC3943\AppData\Roaming\terraform.rc
+2022-07-17T18:26:43.293+0530 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-07-17T18:26:43.294+0530 [INFO]  Loading CLI configuration from C:\Users\AM65085.POOLW42SLPC3943\AppData\Roaming\terraform.d\credentials.tfrc.json
+2022-07-17T18:26:43.296+0530 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-07-17T18:26:43.296+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\AM65085.POOLW42SLPC3943\AppData\Roaming\terraform.d\plugins
+2022-07-17T18:26:43.298+0530 [DEBUG] ignoring non-existing provider search directory C:\Users\AM65085.POOLW42SLPC3943\AppData\Roaming\HashiCorp\Terraform\plugins
+2022-07-17T18:26:43.298+0530 [INFO]  CLI command args: []string{"init"}
+2022-07-17T18:26:43.313+0530 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2022-07-17T18:26:43.313+0530 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2022-07-17T18:26:43.313+0530 [DEBUG] New state was assigned lineage "bd4f52e4-37a2-c7a4-ed81-57ac5a084964"
+2022-07-17T18:26:43.313+0530 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2022-07-17T18:26:43.313+0530 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2022-07-17T18:26:43.314+0530 [DEBUG] checking for provisioner in "."
+2022-07-17T18:26:43.314+0530 [DEBUG] checking for provisioner in "C:\\Terraform\\terraform_1.2.4_windows_amd64"
+2022-07-17T18:26:43.315+0530 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2022-07-17T18:26:43.315+0530 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2022-07-17T18:26:43.315+0530 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2022-07-17T18:26:43.315+0530 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2022-07-17T18:26:43.315+0530 [TRACE] statemgr.Filesystem: read nil snapshot
+2022-07-17T18:26:43.315+0530 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2022-07-17T18:26:43.315+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/.well-known/terraform.json
+2022-07-17T18:26:43.948+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2022-07-17T18:26:43.948+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2022-07-17T18:26:44.127+0530 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2022-07-17T18:26:44.127+0530 [TRACE] getproviders.SearchLocalDirectory: failed to resolve symlinks for .terraform\providers: CreateFile .terraform: The system cannot find the file specified.
+2022-07-17T18:26:44.128+0530 [TRACE] providercache.fillMetaCache: error while scanning directory .terraform\providers: cannot search .terraform\providers: CreateFile .terraform\providers: The system cannot find the path specified.
+2022-07-17T18:26:44.128+0530 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/4.22.0/download/windows/amd64
+2022-07-17T18:26:44.128+0530 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/4.22.0/download/windows/amd64
+2022-07-17T18:26:44.323+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_SHA256SUMS
+2022-07-17T18:26:44.323+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_SHA256SUMS
+2022-07-17T18:26:45.008+0530 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_SHA256SUMS.72D7468F.sig
+2022-07-17T18:26:45.008+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_SHA256SUMS.72D7468F.sig
+2022-07-17T18:26:45.034+0530 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/aws v4.22.0 from https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_windows_amd64.zip
+2022-07-17T18:26:45.035+0530 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.22.0/terraform-provider-aws_4.22.0_windows_amd64.zip
+2022-07-17T18:31:50.424+0530 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2022-07-17T18:31:52.249+0530 [TRACE] providercache.fillMetaCache: scanning directory .terraform\providers
+2022-07-17T18:31:52.257+0530 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/aws v4.22.0 for windows_amd64 at .terraform\providers\registry.terraform.io\hashicorp\aws\4.22.0\windows_amd64
+2022-07-17T18:31:52.257+0530 [TRACE] providercache.fillMetaCache: including .terraform\providers\registry.terraform.io\hashicorp\aws\4.22.0\windows_amd64 as a candidate package for registry.terraform.io/hashicorp/aws 4.22.0

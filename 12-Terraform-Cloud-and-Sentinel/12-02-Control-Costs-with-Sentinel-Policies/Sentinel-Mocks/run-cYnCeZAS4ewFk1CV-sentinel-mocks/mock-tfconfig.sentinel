@@ -1,0 +1,302 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {
+			"aws_ami": {
+				"amzlinux": {
+					"config": {
+						"filter": [
+							{
+								"name": "name",
+								"values": [
+									"amzn2-ami-kernel-*-gp2",
+								],
+							},
+							{
+								"name": "root-device-type",
+								"values": [
+									"ebs",
+								],
+							},
+							{
+								"name": "virtualization-type",
+								"values": [
+									"hvm",
+								],
+							},
+							{
+								"name": "architecture",
+								"values": [
+									"x86_64",
+								],
+							},
+						],
+						"most_recent": true,
+						"owners": [
+							"amazon",
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"filter": [
+							{
+								"name":   [],
+								"values": [],
+							},
+							{
+								"name":   [],
+								"values": [],
+							},
+							{
+								"name":   [],
+								"values": [],
+							},
+							{
+								"name":   [],
+								"values": [],
+							},
+						],
+						"most_recent": [],
+						"owners":      [],
+					},
+				},
+			},
+		},
+		"modules": {},
+		"outputs": {
+			"ec2_instance_privateip": {
+				"depends_on":  [],
+				"description": "EC2 Instance Private IP",
+				"references": [
+					"aws_instance.terraform_ec2_instance",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"ec2_instance_publicip": {
+				"depends_on":  [],
+				"description": "EC2 Instance Public IP",
+				"references": [
+					"aws_instance.terraform_ec2_instance",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"ec2_publicdns": {
+				"depends_on":  [],
+				"description": "Public DNS URL of an EC2 Instance",
+				"references": [
+					"aws_instance.terraform_ec2_instance",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"ec2_security_groups": {
+				"depends_on":  [],
+				"description": "List Security Groups associated with EC2 Instance",
+				"references": [
+					"aws_instance.terraform_ec2_instance",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+		},
+		"providers": {
+			"aws": {
+				"alias": {
+					"": {
+						"config": {},
+						"references": {
+							"region": [
+								"var.aws_region",
+							],
+						},
+						"version": "~> 4.0",
+					},
+				},
+				"config": {},
+				"references": {
+					"region": [
+						"var.aws_region",
+					],
+				},
+				"version": "~> 4.0",
+			},
+		},
+		"resources": {
+			"aws_instance": {
+				"terraform_ec2_instance": {
+					"config": {
+						"key_name":  "terraform-key",
+						"user_data": null,
+					},
+					"provisioners": null,
+					"references": {
+						"ami": [
+							"data.aws_ami.amzlinux.id",
+							"data.aws_ami.amzlinux",
+						],
+						"instance_type": [
+							"var.ec2_instance_type",
+						],
+						"key_name": [],
+						"tags": [
+							"count.index",
+						],
+						"user_data": [],
+						"vpc_security_group_ids": [
+							"aws_security_group.terraform_vpc_ssh.id",
+							"aws_security_group.terraform_vpc_ssh",
+							"aws_security_group.terraform_vpc_web.id",
+							"aws_security_group.terraform_vpc_web",
+						],
+					},
+				},
+			},
+			"aws_security_group": {
+				"terraform_vpc_ssh": {
+					"config": {
+						"description": "Dev VPC SSH",
+						"egress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      "Allow all IP and Ports outbound",
+								"from_port":        0,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "-1",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          0,
+							},
+						],
+						"ingress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      "Allow Port 22",
+								"from_port":        22,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          22,
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"description": [],
+						"egress":      [],
+						"ingress":     [],
+						"name": [
+							"terraform.workspace",
+						],
+					},
+				},
+				"terraform_vpc_web": {
+					"config": {
+						"description": "Dev VPC Web",
+						"egress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      "Allow all IP and Ports outbound",
+								"from_port":        0,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "-1",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          0,
+							},
+						],
+						"ingress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      "Allow Port 80",
+								"from_port":        80,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          80,
+							},
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description":      "Allow Port 443",
+								"from_port":        443,
+								"ipv6_cidr_blocks": null,
+								"prefix_list_ids":  null,
+								"protocol":         "tcp",
+								"security_groups":  null,
+								"self":             null,
+								"to_port":          443,
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"description": [],
+						"egress":      [],
+						"ingress":     [],
+						"name": [
+							"terraform.workspace",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"aws_region": {
+				"default":     "us-east-1",
+				"description": "Region in which AWS Resources to be created",
+			},
+			"ec2_instance_type": {
+				"default":     "t2.micro",
+				"description": "EC2 Instance Type",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs

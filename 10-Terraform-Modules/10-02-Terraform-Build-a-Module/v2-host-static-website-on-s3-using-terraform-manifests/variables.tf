@@ -10,3 +10,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "aws_region" {
+  description = "Region In which AWS Region To Be Creted"
+  type = string
+  default = "us-east-1"
+}
