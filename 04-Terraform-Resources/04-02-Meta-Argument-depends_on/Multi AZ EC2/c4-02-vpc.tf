@@ -15,11 +15,11 @@ resource "aws_vpc" "terraform_vpc" {
 resource "aws_subnet" "terraform_public_subnet" {
   vpc_id                  = aws_vpc.terraform_vpc.id
   count                   = length(var.vpc_public_subnets)
-  cidr_block              = element(var.vpc_public_subnets, count.index)
-  availability_zone       = element(var.vpc_availability_zones, count.index)
+  cidr_block              = var.vpc_public_subnets[count.index]
+  availability_zone       = var.vpc_availability_zones[count.index]
   map_public_ip_on_launch = true
   tags = {
-    Name        = "${local.name}-${element(var.vpc_availability_zones, count.index)}-terraform-public-subnet"
+    Name        = "${local.name}-${var.vpc_availability_zones[count.index]}-terraform-public-subnet"
     Environment = "${var.environment}"
   }
 }
@@ -45,7 +45,7 @@ resource "aws_route_table" "terraform_public_route_table" {
 /* ==========  The routing table to associate with public subnet =============== */
 resource "aws_route_table_association" "terraform_public_route_table_association" {
   count          = length(var.vpc_public_subnets)
-  subnet_id      = element(aws_subnet.terraform_public_subnet.*.id, count.index)
+  subnet_id      = aws_subnet.terraform_public_subnet.*.id[count.index]
   route_table_id = aws_route_table.terraform_public_route_table.id
 }
 
@@ -61,11 +61,11 @@ resource "aws_route" "terraform_public_route" {
 resource "aws_subnet" "terraform_private_subnet" {
   vpc_id                  = aws_vpc.terraform_vpc.id
   count                   = length(var.vpc_private_subnets)
-  cidr_block              = element(var.vpc_private_subnets, count.index)
-  availability_zone       = element(var.vpc_availability_zones, count.index)
+  cidr_block              = var.vpc_private_subnets[count.index]
+  availability_zone       = var.vpc_availability_zones[count.index]
   map_public_ip_on_launch = false
   tags = {
-    Name        = "${local.name}-${element(var.vpc_availability_zones, count.index)}-terraform-private-subnet"
+    Name        = "${local.name}-${var.vpc_availability_zones[count.index]}-terraform-private-subnet"
     Environment = "${var.environment}"
   }
 }
@@ -73,7 +73,7 @@ resource "aws_subnet" "terraform_private_subnet" {
 /* =================== Create NAT Gateway ========================= */
 resource "aws_nat_gateway" "terraform_nat_gateway" {
   allocation_id = aws_eip.terraform_eip.id
-  subnet_id     = element(aws_subnet.terraform_public_subnet.*.id, 0)
+  subnet_id     = aws_subnet.terraform_public_subnet[0].id
   depends_on    = [aws_internet_gateway.terraform_igw]
   tags = {
     Name        = "${local.name}-terraform-nat-gateway"
@@ -93,7 +93,7 @@ resource "aws_route_table" "terraform_private_route_table" {
 /* ============= Route Table Association For Private Subnet ======================= */
 resource "aws_route_table_association" "terraform_private_route_table_association" {
   count          = length(var.vpc_private_subnets)
-  subnet_id      = element(aws_subnet.terraform_private_subnet.*.id, count.index)
+  subnet_id      = aws_subnet.terraform_private_subnet.*.id[count.index]
   route_table_id = aws_route_table.terraform_private_route_table.id
 }
 
