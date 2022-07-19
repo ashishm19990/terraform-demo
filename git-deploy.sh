@@ -5,4 +5,4 @@ git add .
 git commit -am "Welcome In Vardhman Garments"
 
 echo "Pushing to Github Repository"
-git push
+git push origin main
