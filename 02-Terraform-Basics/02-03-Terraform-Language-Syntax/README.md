@@ -7,7 +7,7 @@
   - Understand Identifiers
   - Understand Comments
  
-
+ 
 
 ## Step-02: Terraform Configuration Language Syntax
 - Understand Blocks
@@ -50,4 +50,3 @@ resource "aws_instance" "ec2demo" { # BLOCK
   - Local Values Block
   - Data Sources Block
   - Modules Block
-
